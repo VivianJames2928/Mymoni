@@ -1,6 +1,6 @@
 import { SafeAreaView,Platform,StatusBar,StyleSheet } from "react-native";
 
-export function SafeAreaView(){
+export function SafeArea(){
     return(
         <SafeAreaView styles={styles.container}>
             
@@ -10,6 +10,6 @@ export function SafeAreaView(){
 
 const styles = StyleSheet.create({
     container:{
-        
+
     }
 })
