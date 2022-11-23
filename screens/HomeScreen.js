@@ -5,7 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import { Philosopher_700Bold } from "@expo-google-fonts/philosopher";
-import { SafeAreaView } from "../utilities/AreaView";
+import { SafeArea} from "../utilities/AreaView";
 
 export function HomeScreen (){
     const [appIsReady, setAppIsReady] = useState(false);

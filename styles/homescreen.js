@@ -1,7 +1,7 @@
-import { stylesheet } from "react-native";
+import { Stylesheet } from "react-native";
 
 
-export const styles=stylesheet.create({
+export const styles=Stylesheet.create({
     title:{
         fontFamily:"Lobster_400Regular",
         fontSize:40
