@@ -11,6 +11,10 @@ export const Theme = {
     brown700:'#6B4F4F',
     brown500:'#EED6C4',
     brown300:'#FFF3E4',
+    redAltYellow:'#DC3535',
+    yellowAltRed:'#FFE15D',
+    greenAltYellow:'#379237',
+    yellowAltGreen:'#F0FF42'
   },
   sizes: [0, 4, 8, 16, 32,64,128],
   fonts: {

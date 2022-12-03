@@ -1,11 +1,14 @@
 import { View  } from 'react-native';
 import { SafeArea } from '../utilities/AreaView';
 import { Button } from 'react-native-paper';
-export function SignIn({navigation}){
+
+export function Quizes({navigation, route}){
+    const  {userName, email} = route.params;
+    console.log(userName,email)
     return(
         <SafeArea>
             <View>
-                <Button mode='contained' onPress={() => navigation.navigate('Signup')}>Go to Sign Up</Button>
+               
             </View>
         </SafeArea>
     )
