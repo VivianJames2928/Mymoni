@@ -14,7 +14,14 @@ export const Theme = {
     redAltYellow:'#DC3535',
     yellowAltRed:'#FFE15D',
     greenAltYellow:'#379237',
-    yellowAltGreen:'#F0FF42'
+    yellowAltGreen:'#F0FF42',
+    green500:"#82CD47",
+    green700:"#54B435",
+    green900:"#379237",
+    red300:"#FFC3C3",
+    red500:"#FF8C8C",
+    red700:"FF5D5D",
+
   },
   sizes: [0, 4, 8, 16, 32,64,128],
   fonts: {

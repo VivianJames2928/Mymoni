@@ -56,7 +56,7 @@ function HomeScreen({navigation}){
         <View style={styles.container}>  
           <View style={styles.header}>
             <View style={styles.nav}>
-              <View style={styles.brandOutline}><Text style={styles.brandText}>mymoni</Text></View>
+              <Text style={styles.brandText}>mymoni</Text>
               <View style={styles.profileOutline}><Image style={styles.userPix} source={require('../assets/profile-pix.jpg')}/></View>
             </View>
             <View style={styles.tipOfDay}>
@@ -78,11 +78,13 @@ function HomeScreen({navigation}){
           </View>
 
           <View style={styles.transact}>
-            <TouchableOpacity style={styles.income}>
+            <TouchableOpacity style={styles.income}
+            onPress={() => navigation.navigate("Add Income")}>
               <FontAwesomeIcon size={Theme.fonts.fontSizePoint.h4} icon={faCirclePlus} color={Theme.colors.yellowAltGreen}/>
               <Text style={styles.incomeText}>Income</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.expense}>
+            <TouchableOpacity style={styles.expense}
+              onPress={() => navigation.navigate("Add Expense")}>
               <FontAwesomeIcon size={Theme.fonts.fontSizePoint.h4} icon={faCirclePlus} color={Theme.colors.yellowAltRed}/>
               <Text style={styles.expenseText}>Expense</Text>
             </TouchableOpacity>
@@ -100,8 +102,8 @@ function HomeScreen({navigation}){
               <Text style={styles.quizInfo}>Take test</Text>
             </View>
             <TouchableOpacity onPress={()=> navigation.navigate('Quizes', {
-              userName:'Jane',
-              email: 'ibezimjane4@gmail.com',
+              userName:'Vivian',
+              email: 'Vivianjames@gmail.com',
               
             })}>
               <FontAwesomeIcon 
