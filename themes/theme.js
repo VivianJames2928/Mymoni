@@ -20,7 +20,7 @@ export const Theme = {
     green900:"#379237",
     red300:"#FFC3C3",
     red500:"#FF8C8C",
-    red700:"FF5D5D",
+    red700:"#FF5D5D",
 
   },
   sizes: [0, 4, 8, 16, 32,64,128],
