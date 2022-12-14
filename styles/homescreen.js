@@ -22,7 +22,7 @@ export const styles= StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        marginBottom:Theme.sizes[2]
+        marginBottom:Theme.sizes[2],
     },
     // brandOutline:{
     //     borderTopWidth:4,

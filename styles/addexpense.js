@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     header:{
         padding: Theme.sizes[3],
         borderWidth:1,
-        borderColor:Theme.colors.red500,
+        borderColor:Theme.colors.red300,
         borderRadius:10,
         marginBottom:Theme.sizes[3],
     },
