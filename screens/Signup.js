@@ -17,7 +17,6 @@ const Rules = yup.object({
     .required('this field is required')
     .min(2,'write up to 2 characters'),
     
-
     lName:yup.string()
     .required('this field is required')
     .min(2,'write up to 2 characters')
@@ -66,7 +65,7 @@ export function SignUp ({navigation}){
     
       if (!appIsReady) {
         return null;
-}
+    }
 
     return (
         <SafeArea>
@@ -92,9 +91,9 @@ export function SignUp ({navigation}){
                 onSubmit={(values,actions) => {
                     createUserWithEmailAndPassword(authentication, values.email, values.password)
                     .then(()=>{
-                      onAuthStateChanged(authentication, ((user)=>{
+                      onAuthStateChanged(authentication, (user) =>{
                         console.log(user.uid)
-                      }))
+                      });
                       
                     })
                     .catch((error)=>{
@@ -111,14 +110,12 @@ export function SignUp ({navigation}){
                                 <View style={styles.firstname}>
                                     <Text style={styles.write}>First Name</Text>
                                     <TextInput style={styles.input} 
-                                     multiline={true}
                                      onChangeText={handleChange('fName')}
                                      onBlur={handleBlur('fName')}
                                      value={values.fName}/>
                                 <Text style={{color:'red', 
                                     display:!touched.fName && !errors.fName ? 'none' : null
-                                    }}>
-                                    {touched.fName && errors.fName}
+                                    }}>{touched.fName && errors.fName}
                                 </Text>
                                 </View>
 
@@ -130,11 +127,10 @@ export function SignUp ({navigation}){
                                     onChangeText={handleChange('lName')}
                                     onBlur={handleBlur('lName')}
                                     value={values.lName}/>
-                                <Text style={{color:'red', 
+                                <Text style={{
+                                    color:'red', 
                                     display:!touched.lName && !errors.lName ? 'none' : null
-                                    }}>
-                                    {touched.lName && errors.lName}
-                                </Text>
+                                    }}>{touched.lName && errors.lName}</Text>
                                 </View>
 
 
@@ -169,8 +165,8 @@ export function SignUp ({navigation}){
 
                                 <View style={styles.password}>
                                     <Text style={styles.write}>Password</Text>
-                                    <TextInput style={styles.input} 
-                                    multiline={true}
+                                    <TextInput style={styles.input}
+                                    secureTextEntry={true}
                                     onChangeText={handleChange('password')}
                                     onBlur={handleBlur('password')}
                                     value={values.password}/>
@@ -185,7 +181,8 @@ export function SignUp ({navigation}){
                                 <View style={styles.confirm}>
                                     <Text style={styles.write}>Confirm Password</Text>
                                     <TextInput style={styles.input}
-                                    multiline={true}
+                                    secureTextEntry={true}
+                                    // multiline={true}
                                     onChangeText={handleChange('passwordConfirmation')}
                                     onBlur={handleBlur('passwordConfirmation')}
                                     value={values.passwordConfirmation} />
@@ -199,9 +196,11 @@ export function SignUp ({navigation}){
 
                             </View>
                             <Button mode='contained'  onPress={handleSubmit} 
-                            style={styles.button}><Text style={styles.button}>Sign Up</Text></Button>
-                            <Button mode='contained' onPress={() => navigation.navigate('Sign In')} style={styles.button2}>
-                                <Text style={styles.button2}>I already have an account</Text></Button>
+                            style={styles.button}>Sign Up</Button>
+
+                            <Button mode='contained' 
+                            onPress={() => navigation.navigate('Sign In')}
+                            style={styles.button2}>I already have an account</Button>
                         </>
                     )}
                 </Formik>
