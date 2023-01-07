@@ -1,3 +1,5 @@
+import { AppContext } from '../globals/AppContext';
+import { useContext } from 'react';
 import { View,Text } from 'react-native';
 import { SafeArea } from '../utilities/AreaView';
 import { styles } from '../styles/addincome';
@@ -6,7 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faTurnDown } from '@fortawesome/free-solid-svg-icons';
 import { TextInput,Button } from 'react-native-paper';
 import { Formik } from 'formik';
-import * as yup from "yup"
+import * as yup from "yup";
+import { db } from '../Services/firebase';
+import { Alert } from 'react-native';
+import {addDoc, collection} from "firebase/firestore"
 
  const formRules = yup.object({
     amount:yup.number()
@@ -19,6 +24,8 @@ import * as yup from "yup"
 })
 
 export function AddIncome(){
+    const { uid } = useContext(AppContext)
+
     return(
         <SafeArea>
             <View style={styles.container}>
@@ -37,7 +44,26 @@ export function AddIncome(){
                 }}
 
                 onSubmit={(values,actions)=> {
-                    console.log(values.amount,values.description);
+                    const now = new Date();
+                    const timestamp = now.getTime();
+
+                    // Generate a unique id for each transaction
+                    const transactionId = "EXP" + Math.round(Math.random() * 100000000) 
+
+                    addDoc(collection(db,"transactions"),{
+                        amount:values.amount,
+                        transType:"Income",
+                        desc:values.description,
+                        userUID:uid,
+                        transID: transID,
+                        eventTime:timestamp
+                    })
+                    .then(() => Alert.alert(
+                        "Status",
+                        `You have successfully filed an income of N${values.amount}`,
+                        [{text:"okay"}]
+                    ))
+                    .catch(() => console.log(error))
 
                     actions.resetForm();//clears inputs
                 }}
@@ -70,7 +96,10 @@ export function AddIncome(){
                         mode='outlined'
                         outlineColor={Theme.colors.green700}
                         activeOutlineColor={Theme.colors.green900}
-                        style={{paddingVertical:Theme.sizes[2],FontSize:Theme.fonts.fontSizePoint.title,marginBottom:Theme.sizes[2]
+                        style={{
+                            paddingVertical:Theme.sizes[2],
+                            FontSize:Theme.fonts.fontSizePoint.title,
+                            marginBottom:Theme.sizes[2]
                         }}
                         multiline={true}
                         onChangeText={handleChange('description')}

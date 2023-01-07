@@ -25,9 +25,10 @@
     "expo-font": "^11.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
-    "firebase": "9.6.11",
+    "firebase": "^9.6.11",
     "formik": "^2.2.9",
     "latest-version": "^7.0.0",
+    "native": "^0.3.3",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "~2.8.0",
@@ -36,6 +37,7 @@
     "react-native-screens": "^3.18.2",
     "react-native-svg": "13.4.0",
     "react-native-vector-icons": "^9.2.0",
+    "reanimated": "^0.0.1-alpha",
     "yup": "^0.32.11"
   },
   "devDependencies": {

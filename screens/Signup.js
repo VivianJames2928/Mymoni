@@ -1,5 +1,6 @@
+// import * as React from "react"
 import { SafeArea } from '../utilities/AreaView';
-import { useState, useEffect,useCallback } from 'react';
+import { useState, useEffect,useCallback, useContext } from 'react';
 import { View, Text, TextInput, ScrollView} from 'react-native';
 import { Button } from 'react-native-paper';
 import { styles } from '../styles/signup';
@@ -11,6 +12,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { authentication } from '../Services/firebase';
 import { createUserWithEmailAndPassword,onAuthStateChanged } from 'firebase/auth';
+import { AppContext } from '../globals/AppContext';
 
 const Rules = yup.object({
     fName:yup.string()
@@ -39,6 +41,8 @@ const Rules = yup.object({
 })
 
 export function SignUp ({navigation}){
+    const {email,setEmail,uid,setUid} = useContext(AppContext)
+
     const [appIsReady, setAppIsReady] = useState(false);
     
         useEffect(() => {
@@ -85,11 +89,12 @@ export function SignUp ({navigation}){
                     email:'',
                     password:'',
                     passwordConfirmation:'',
-                    phoneNumber:0
+                    phoneNumber:0,
+                    userID:''
                 }}
 
                 onSubmit={(values,actions) => {
-                    createUserWithEmailAndPassword(authentication, values.email, values.password)
+                    createUserWithEmailAndPassword(authentication, values.email, values.password, values.uid)
                     .then(()=>{
                       onAuthStateChanged(authentication, (user) =>{
                         console.log(user.uid)
@@ -113,10 +118,10 @@ export function SignUp ({navigation}){
                                      onChangeText={handleChange('fName')}
                                      onBlur={handleBlur('fName')}
                                      value={values.fName}/>
-                                <Text style={{color:'red', 
+                                <Text style={{
+                                    color:'red', 
                                     display:!touched.fName && !errors.fName ? 'none' : null
-                                    }}>{touched.fName && errors.fName}
-                                </Text>
+                                    }}>{touched.fName && errors.fName}</Text>
                                 </View>
 
 
@@ -129,8 +134,8 @@ export function SignUp ({navigation}){
                                     value={values.lName}/>
                                 <Text style={{
                                     color:'red', 
-                                    display:!touched.lName && !errors.lName ? 'none' : null
-                                    }}>{touched.lName && errors.lName}</Text>
+                                    display:!touched.lName && !errors.lName ? 'none' : null}}>
+                                    {touched.lName && errors.lName}</Text>
                                 </View>
 
 
@@ -140,11 +145,10 @@ export function SignUp ({navigation}){
                                     onChangeText={handleChange('phoneNumber')}
                                     onBlur={handleBlur('phoneNumber')}
                                     value={values.phoneNumber}/>
-                                <Text style={{color:'red', 
-                                    display:!touched.phoneNumber && !errors.phoneNumber ? 'none' : null
-                                    }}>
-                                    {touched.phoneNumber && errors.phoneNumber}
-                                </Text>
+                                <Text style={{
+                                    color:'red', 
+                                    display:!touched.phoneNumber && !errors.phoneNumber ? 'none' : null}}>
+                                    {touched.phoneNumber && errors.phoneNumber}</Text>
                                 </View>
 
 
