@@ -63,7 +63,7 @@ export function Profile ({navigation}){
 
           <View style={styles.name}>
             <Text style={styles.fName}>Vivian</Text>
-            <Text style={styles.lName}>James</Text>
+            <Text style={styles.lName}>James Ilevare</Text>
           </View>
 
           <View style={styles.menu}>
